@@ -1,7 +1,12 @@
+using Microsoft.Data.SqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var sqlConnectionBuilder = new SqlConnectionStringBuilder();
+sqlConnectionBuilder.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 var app = builder.Build();
 
